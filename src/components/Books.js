@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from "react";
+import Book from "./Book";
+import '../App.css';
+import { ApiContext } from "../context/apiContext";
 
 function Books() {
+  const { bookList } = useContext(ApiContext);
   return (
-    <div>Books</div>
-  )
+    <div className="booklayout">
+      {bookList.map((product) => {
+        return <Book product={product} key={product.book_id} />;
+      })}
+    </div>
+  );
 }
 
-export default Books
+export default Books;
